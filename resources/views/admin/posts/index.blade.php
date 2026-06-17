@@ -70,6 +70,11 @@
                         <td class="text-muted">{{ $post->created_at->format('d M Y') }}</td>
                         <td class="col-actions">
                             <div class="btn-group-actions">
+                                @if ($post->status === 'published')
+                                    <a href="{{ route('articles.show', $post->slug) }}" class="btn btn-action btn-action-view" title="Lihat" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                @endif
                                 <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-action btn-action-edit" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </a>

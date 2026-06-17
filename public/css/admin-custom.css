@@ -532,3 +532,43 @@ body.admin-theme .main-footer {
     color: var(--admin-muted);
     font-size: 0.8rem;
 }
+
+body.admin-theme .form-group-content {
+    margin-top: 1.25rem;
+}
+
+body.admin-theme .form-group-content .tox-tinymce {
+    border-radius: 8px;
+    border-color: var(--admin-card-border) !important;
+    min-height: 720px;
+}
+
+body.admin-theme .form-group-content .tox .tox-edit-area__iframe {
+    min-height: 640px;
+}
+
+body.admin-theme .select2-container--bootstrap4 .select2-selection {
+    border-radius: 8px;
+    border-color: var(--admin-card-border);
+    min-height: 38px;
+}
+
+body.admin-theme .select2-container--bootstrap4 .select2-selection--multiple {
+    min-height: 42px;
+    padding: 2px 4px;
+}
+
+body.admin-theme .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+    background: var(--admin-primary-light);
+    border-color: #c7d2fe;
+    color: var(--admin-primary-dark);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+body.admin-theme .select2-container--bootstrap4.select2-container--focus .select2-selection,
+body.admin-theme .select2-container--bootstrap4.select2-container--open .select2-selection {
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}

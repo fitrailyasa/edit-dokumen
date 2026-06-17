@@ -27,4 +27,23 @@ class SiteSetting extends Model
     {
         return static::firstOrCreate([]);
     }
+
+    public function whatsappNumber(): string
+    {
+        $number = preg_replace('/\D/', '', (string) ($this->whatsapp ?: '6287777638865'));
+
+        return $number !== '' ? $number : '6287777638865';
+    }
+
+    public function whatsappUrl(?string $message = null): string
+    {
+        $defaultMessage = 'Halo EditDokumen.id, saya tertarik dengan layanan olah dokumen Anda. Bisa dibantu?';
+
+        return 'https://wa.me/'.$this->whatsappNumber().'?text='.rawurlencode($message ?? $defaultMessage);
+    }
+
+    public function whatsappInternational(): string
+    {
+        return '+'.$this->whatsappNumber();
+    }
 }

@@ -17,6 +17,12 @@
 
                 <li class="nav-header">Konten</li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.pages.index') }}" class="nav-link {{ request()->routeIs('admin.pages.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-file-alt"></i>
+                        <p>Halaman</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.posts.index') }}" class="nav-link {{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-newspaper"></i>
                         <p>Artikel</p>

@@ -9,29 +9,32 @@
 @endsection
 
 @section('content')
-<form method="POST" action="{{ route('admin.posts.update', $post) }}" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
-    <div class="card admin-card">
-        <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-edit"></i> Edit Artikel</h3>
+    <form method="POST" action="{{ route('admin.posts.update', $post) }}" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <div class="card admin-card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-edit"></i> Edit Artikel</h3>
+            </div>
+            <div class="card-body">
+                @include('admin.posts._form')
+            </div>
+            <div class="card-footer bg-white">
+                <button type="submit" class="btn btn-warning btn-admin-add">
+                    <i class="fas fa-save"></i> Update Artikel
+                </button>
+                <a href="{{ route('admin.posts.index') }}" class="btn btn-light">Batal</a>
+            </div>
         </div>
-        <div class="card-body">
-            @include('admin.posts._form')
-        </div>
-        <div class="card-footer bg-white">
-            <button type="submit" class="btn btn-warning btn-admin-add">
-                <i class="fas fa-save"></i> Update Artikel
-            </button>
-            <a href="{{ route('admin.posts.index') }}" class="btn btn-light">Batal</a>
-        </div>
-    </div>
-</form>
+    </form>
 @endsection
 
 @push('scripts')
-<script>
-    const postSlug = initAutoSlug('#post-title', '#post-slug');
-    postSlug?.detectManual();
-</script>
+    <script>
+        const postSlug = initAutoSlug('#post-title', '#post-slug');
+        postSlug?.detectManual();
+    </script>
 @endpush
+
+@include('layouts.admin.partials.tinymce')
+@include('layouts.admin.partials.select2', ['placeholder' => 'Pilih tag...'])

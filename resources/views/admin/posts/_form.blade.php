@@ -4,24 +4,22 @@
         <div class="form-group">
             <label>Judul <span class="text-danger">*</span></label>
             <input type="text" name="title" id="post-title" class="form-control"
-                value="{{ old('title', $post?->title) }}"
-                placeholder="Contoh: Cara Edit PDF Online dengan Mudah" required>
+                value="{{ old('title', $post?->title) }}" placeholder="Contoh: Cara Edit PDF Online dengan Mudah"
+                required>
         </div>
         <div class="form-group">
             <label>Slug</label>
             <input type="text" name="slug" id="post-slug" class="form-control"
-                value="{{ old('slug', $post?->slug) }}"
-                placeholder="Otomatis dari judul, contoh: cara-edit-pdf-online">
+                value="{{ old('slug', $post?->slug) }}" placeholder="Otomatis dari judul, contoh: cara-edit-pdf-online">
         </div>
         <div class="form-group">
             <label>Ringkasan</label>
             <textarea name="excerpt" class="form-control" rows="3"
                 placeholder="Ringkasan singkat artikel yang akan tampil di halaman daftar...">{{ old('excerpt', $post?->excerpt) }}</textarea>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-content">
             <label>Konten <span class="text-danger">*</span></label>
-            <textarea name="body" class="form-control" rows="12" required
-                placeholder="Tulis konten artikel di sini...">{{ old('body', $post?->body) }}</textarea>
+            <textarea name="body" class="form-control tinymce" rows="24" required>{{ old('body', $post?->body) }}</textarea>
         </div>
     </div>
     <div class="col-md-4">
@@ -56,8 +54,8 @@
                 </div>
                 <div class="form-group">
                     <label>Tag</label>
-                    <select name="tags[]" class="form-control" multiple size="5"
-                        title="Tahan Ctrl (Windows) atau Cmd (Mac) untuk memilih banyak tag">
+                    <select name="tags[]" class="form-control select2-multiselect" multiple
+                        data-placeholder="Pilih tag...">
                         @php $selectedTags = old('tags', $post?->tags?->pluck('id')->toArray() ?? []); @endphp
                         @foreach ($tags as $tag)
                             <option value="{{ $tag->id }}" @selected(in_array($tag->id, $selectedTags))>
@@ -65,7 +63,7 @@
                             </option>
                         @endforeach
                     </select>
-                    <small class="text-muted">Tahan Ctrl untuk pilih banyak tag</small>
+                    <small class="text-muted">Ketik untuk mencari, klik untuk memilih banyak tag</small>
                 </div>
                 <div class="form-group mb-0">
                     <label>Gambar Utama</label>
@@ -74,7 +72,8 @@
                     <small class="text-muted d-block mt-1">JPG, PNG, WEBP — maks. 2MB</small>
                     @if ($post?->featured_image)
                         <div class="mt-2">
-                            <img src="{{ asset('storage/' . $post->featured_image) }}" alt="Featured" class="img-fluid rounded">
+                            <img src="{{ asset('storage/' . $post->featured_image) }}" alt="Featured"
+                                class="img-fluid rounded">
                         </div>
                     @endif
                 </div>

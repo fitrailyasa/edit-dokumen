@@ -9,27 +9,30 @@
 @endsection
 
 @section('content')
-<form method="POST" action="{{ route('admin.posts.store') }}" enctype="multipart/form-data">
-    @csrf
-    <div class="card admin-card">
-        <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-plus-circle"></i> Form Artikel Baru</h3>
+    <form method="POST" action="{{ route('admin.posts.store') }}" enctype="multipart/form-data">
+        @csrf
+        <div class="card admin-card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-plus-circle"></i> Form Artikel Baru</h3>
+            </div>
+            <div class="card-body">
+                @include('admin.posts._form')
+            </div>
+            <div class="card-footer bg-white">
+                <button type="submit" class="btn btn-primary btn-admin-add">
+                    <i class="fas fa-save"></i> Simpan Artikel
+                </button>
+                <a href="{{ route('admin.posts.index') }}" class="btn btn-light">Batal</a>
+            </div>
         </div>
-        <div class="card-body">
-            @include('admin.posts._form')
-        </div>
-        <div class="card-footer bg-white">
-            <button type="submit" class="btn btn-primary btn-admin-add">
-                <i class="fas fa-save"></i> Simpan Artikel
-            </button>
-            <a href="{{ route('admin.posts.index') }}" class="btn btn-light">Batal</a>
-        </div>
-    </div>
-</form>
+    </form>
 @endsection
 
 @push('scripts')
-<script>
-    initAutoSlug('#post-title', '#post-slug');
-</script>
+    <script>
+        initAutoSlug('#post-title', '#post-slug');
+    </script>
 @endpush
+
+@include('layouts.admin.partials.tinymce')
+@include('layouts.admin.partials.select2', ['placeholder' => 'Pilih tag...'])
