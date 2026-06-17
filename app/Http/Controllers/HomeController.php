@@ -39,7 +39,7 @@ class HomeController extends Controller
         $visibleHomeServices = $homeServices->take(9);
         $moreHomeServices = $homeServices->slice(9)->values();
 
-        return view('welcome', compact(
+        return view('client.index', compact(
             'siteSetting',
             'waUrl',
             'recentPosts',
