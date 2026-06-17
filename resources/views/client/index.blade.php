@@ -89,6 +89,7 @@
             --white: #FFFFFF;
             --radius: 16px;
             --mobile-w: 460px;
+            --container: min(1200px, calc(100% - 48px));
         }
 
         body {
@@ -182,6 +183,14 @@
             width: 14px;
             height: 14px;
             fill: white;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .nav-inner {
+            display: contents;
         }
 
         /* ── HERO ── */
@@ -306,6 +315,27 @@
             width: 16px;
             height: 16px;
             fill: rgba(255, 255, 255, .9);
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .hero-trust span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255, 255, 255, .15);
+            border: 1px solid rgba(255, 255, 255, .25);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 50px;
         }
 
         /* stats row */
@@ -460,6 +490,55 @@
             font-weight: 600;
             padding: 3px 10px;
             border-radius: 50px;
+        }
+
+        .service-cta {
+            display: none;
+        }
+
+        /* ── WHY US ── */
+        .why-us {
+            background: var(--bg);
+            padding: 48px 20px;
+        }
+
+        .why-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .why-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            text-align: center;
+        }
+
+        .why-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--primary-light);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 14px;
+        }
+
+        .why-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .why-card p {
+            font-size: 13.5px;
+            color: var(--muted);
+            line-height: 1.6;
         }
 
         /* ── PROMO BANNER ── */
@@ -769,8 +848,11 @@
         }
 
         /* ── CTA BOTTOM ── */
+        .cta-wrap {
+            padding: 0 20px 28px;
+        }
+
         .cta-bottom {
-            margin: 0 20px 28px;
             background: linear-gradient(160deg, #2563EB, #3B82F6);
             border-radius: var(--radius);
             padding: 28px 20px;
@@ -944,6 +1026,281 @@
         .content a:hover {
             text-decoration: underline;
         }
+
+        /* ── DESKTOP ── */
+        @media (min-width: 768px) {
+            body {
+                background: var(--white);
+                display: block;
+            }
+
+            .shell {
+                max-width: 100%;
+                box-shadow: none;
+            }
+
+            nav {
+                padding: 0 24px;
+            }
+
+            .nav-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: var(--container);
+                margin: 0 auto;
+                padding: 16px 0;
+            }
+
+            .nav-links {
+                display: flex;
+                align-items: center;
+                gap: 32px;
+            }
+
+            .nav-links a {
+                color: var(--muted);
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 600;
+                transition: color .2s;
+            }
+
+            .nav-links a:hover {
+                color: var(--primary);
+            }
+
+            .hero {
+                padding: 88px 24px 96px;
+            }
+
+            .hero h1 {
+                font-size: clamp(36px, 4.5vw, 52px);
+                max-width: 820px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero h1 br {
+                display: none;
+            }
+
+            .hero p {
+                font-size: 17px;
+                max-width: 640px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-cta {
+                flex-direction: row;
+                justify-content: center;
+                gap: 14px;
+            }
+
+            .btn-primary {
+                width: auto;
+                padding: 15px 32px;
+            }
+
+            .hero-stats {
+                max-width: 520px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .section-header {
+                padding: 56px 24px 8px;
+                max-width: var(--container);
+                margin: 0 auto;
+            }
+
+            .section-header h2 br {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .section-header p {
+                font-size: 16px;
+                max-width: 560px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .services {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                max-width: var(--container);
+                margin: 0 auto;
+                padding: 24px 0 40px;
+            }
+
+            .service-card {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 28px 24px;
+                background: white;
+            }
+
+            .service-body p {
+                font-size: 14px;
+            }
+
+            .service-cta {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                margin-top: 16px;
+                color: var(--primary);
+                font-size: 14px;
+                font-weight: 700;
+            }
+
+            .why-us {
+                padding: 64px 24px;
+            }
+
+            .why-us .section-header {
+                padding-top: 0;
+            }
+
+            .why-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                max-width: var(--container);
+                margin: 32px auto 0;
+            }
+
+            .promo {
+                max-width: var(--container);
+                margin: 0 auto 40px;
+            }
+
+            .how {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px 32px;
+                max-width: var(--container);
+                margin: 0 auto;
+                padding: 24px 0 48px;
+            }
+
+            .step:not(:last-child)::after {
+                display: none;
+            }
+
+            .pricing {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                max-width: var(--container);
+                margin: 0 auto;
+                padding: 24px 0 48px;
+            }
+
+            .testimonials {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                max-width: var(--container);
+                margin: 0 auto;
+                padding: 24px 0 48px;
+            }
+
+            .faq-list {
+                max-width: 720px;
+                margin: 0 auto;
+                padding: 24px 0 48px;
+            }
+
+            .cta-wrap {
+                padding: 0;
+                background: linear-gradient(160deg, #2563EB, #3B82F6);
+                margin-bottom: 0;
+            }
+
+            .cta-bottom {
+                max-width: var(--container);
+                margin: 0 auto;
+                padding: 72px 40px;
+                background: none;
+                border-radius: 0;
+            }
+
+            .cta-bottom h2 {
+                font-size: 32px;
+            }
+
+            .btn-wa {
+                width: auto;
+                padding: 15px 36px;
+            }
+
+            footer {
+                padding: 48px 24px;
+            }
+
+            .float-wa {
+                right: 28px;
+            }
+
+            .about-section,
+            .articles-section,
+            .keywords-section {
+                max-width: var(--container);
+                margin: 0 auto;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .about-section {
+                padding-top: 48px;
+                padding-bottom: 48px;
+            }
+
+            .articles-section {
+                padding-top: 48px;
+                padding-bottom: 48px;
+            }
+
+            .keywords-section {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+
+            .articles-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 14px !important;
+            }
+
+            .keywords-grid {
+                grid-template-columns: repeat(4, 1fr) !important;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .how {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .articles-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+        }
     </style>
     <meta name="description"
         content="EditDokumen.id — jasa edit PDF, scan foto ke PDF, bikin makalah, convert JPG ke PDF, tambah watermark, dan 30+ layanan dokumen online. Mulai Rp 5.000. Chat WA sekarang!" />
@@ -1065,29 +1422,42 @@
     <main class="shell" role="main">
         <!-- NAV -->
         <nav aria-label="Navigasi utama">
-            <a href="{{ route('home') }}" class="logo" aria-label="EditDokumen.id — Beranda">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" />
-                    </svg>
+            <div class="nav-inner">
+                <a href="{{ route('home') }}" class="logo" aria-label="EditDokumen.id — Beranda">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" />
+                        </svg>
+                    </div>
+                    <span class="logo-text">Edit<span>Dokumen</span>.id</span>
+                </a>
+                <div class="nav-links">
+                    <a href="{{ route('home') }}">Beranda</a>
+                    <a href="#layanan">Layanan</a>
+                    <a href="{{ route('articles.index') }}">Artikel</a>
                 </div>
-                <span class="logo-text">Edit<span>Dokumen</span>.id</span>
-            </a>
-            <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="nav-wa"
-                aria-label="Chat WhatsApp EditDokumen.id">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path
-                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
-                </svg>
-                Chat WA
-            </a>
+                <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="nav-wa"
+                    aria-label="Chat WhatsApp EditDokumen.id">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+                    </svg>
+                    Chat WA
+                </a>
+            </div>
         </nav>
         <!-- HERO -->
         <section class="hero">
-            <div class="hero-badge"><span>⚡</span> Selesai 1-2 Jam</div>
-            <h1>Jasa Edit PDF,<br />Scan Foto ke PDF & <br /><em>Bikin Makalah</em><br />Secara Profesional</h1>
+            <div class="hero-badge"><span>⚡</span> Jasa Edit Dokumen Terpercaya #1</div>
+            <h1>Jasa Edit PDF, Scan Foto ke PDF & <em>Bikin Makalah</em> Secara Profesional</h1>
             <p>Bayar di awal, langsung dikerjakan & revisi sampai puas. Proses cepat, hasil profesional. Chat WhatsApp
                 sekarang!</p>
+            <div class="hero-trust">
+                <span>✓ Bebas Plagiarisme</span>
+                <span>✓ Tepat Waktu</span>
+                <span>✓ Garansi Revisi</span>
+                <span>✓ 100% Rahasia</span>
+            </div>
             <div class="hero-cta">
                 <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="btn-primary">
                     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -1122,7 +1492,7 @@
         <div class="divider"></div>
         <div class="section-header" id="layanan">
             <div class="section-tag">Layanan Kami</div>
-            <h2>{{ $featuredServices->count() }} Layanan Utama<br />yang Tersedia</h2>
+            <h2>{{ $featuredServices->count() }} Layanan Utama yang Tersedia</h2>
             <p>Pilih layanan sesuai kebutuhanmu, harga terjangkau hasil maksimal.</p>
         </div>
         <div class="services">
@@ -1140,10 +1510,41 @@
                                 @endforeach
                             </div>
                         @endif
+                        <span class="service-cta">Pesan →</span>
                     </div>
                 </a>
             @endforeach
         </div>
+        <!-- WHY US -->
+        <section class="why-us">
+            <div class="section-header">
+                <div class="section-tag">Keunggulan</div>
+                <h2>Mengapa Memilih Kami?</h2>
+                <p>Kepuasan dan kepercayaan pelanggan adalah prioritas utama kami.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">🛡️</div>
+                    <h3>Bebas Plagiarisme</h3>
+                    <p>Setiap dokumen dicek kualitasnya dan dijaga orisinalitasnya.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">⏱️</div>
+                    <h3>Tepat Waktu</h3>
+                    <p>Pengerjaan sesuai deadline yang disepakati, rata-rata selesai 1–2 jam.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🔄</div>
+                    <h3>Garansi Revisi</h3>
+                    <p>Revisi gratis tanpa batas sampai hasil sesuai keinginan Anda.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🔒</div>
+                    <h3>100% Rahasia</h3>
+                    <p>Data dan file Anda dijaga kerahasiaannya sepenuhnya.</p>
+                </div>
+            </div>
+        </section>
         <!-- PROMO BANNER -->
         <div class="promo">
             <div class="promo-icon">🎁</div>
@@ -1157,7 +1558,7 @@
         <div class="divider" style="margin-top:20px;"></div>
         <div class="section-header">
             <div class="section-tag">Cara Order</div>
-            <h2>Mudah, Cepat,<br />Beres!</h2>
+            <h2>Mudah, Cepat, Beres!</h2>
         </div>
         <div class="how">
             <div class="step">
@@ -1193,7 +1594,7 @@
         <div class="divider"></div>
         <div class="section-header">
             <div class="section-tag">Harga</div>
-            <h2>Harga Transparan,<br />Tanpa Biaya Tambahan</h2>
+            <h2>Harga Transparan, Tanpa Biaya Tambahan</h2>
             <p>Harga bisa berubah sesuai tingkat kesulitan. Tanya dan konsultasi dulu gratis!</p>
         </div>
         <div class="pricing">
@@ -1245,7 +1646,7 @@
         <div class="divider"></div>
         <div class="section-header">
             <div class="section-tag">Testimoni</div>
-            <h2>Kata Mereka yang<br />Sudah Order</h2>
+            <h2>Kata Mereka yang Sudah Order</h2>
         </div>
         <div class="testimonials">
             <div class="testi-card">
@@ -1292,7 +1693,7 @@
         <div class="divider"></div>
         <div class="section-header">
             <div class="section-tag">FAQ</div>
-            <h2>Pertanyaan yang<br />Sering Ditanya</h2>
+            <h2>Pertanyaan yang Sering Ditanya</h2>
         </div>
         <div class="faq-list">
             <div class="faq-item">
@@ -1399,7 +1800,7 @@
         </div>
         <!-- ABOUT SECTION -->
         <div class="divider"></div>
-        <div style="padding:24px 20px;background:white;">
+        <div class="about-section" style="padding:24px 20px;background:white;">
             <p
                 style="font-size:11.5px;font-weight:700;color:#4B5563;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">
                 Tentang EditDokumen.id</p>
@@ -1434,11 +1835,11 @@
         </div>
         <!-- ARTIKEL -->
         <div class="divider"></div>
-        <div style="padding:24px 20px 28px;">
+        <div class="articles-section" style="padding:24px 20px 28px;">
             <p
                 style="font-size:11.5px;font-weight:700;color:#4B5563;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px;">
                 Panduan & Tips</p>
-            <div style="display:flex;flex-direction:column;gap:10px;" id="dynamic-articles">
+            <div class="articles-grid" style="display:flex;flex-direction:column;gap:10px;" id="dynamic-articles">
                 @forelse ($recentPosts ?? [] as $post)
                     <a href="{{ route('articles.show', $post->slug) }}"
                         style="display:flex;align-items:center;gap:12px;background:#F9F9FB;border:1px solid #E5E7EB;border-radius:12px;padding:14px;text-decoration:none;">
@@ -1460,24 +1861,26 @@
             </a>
         </div>
         <!-- CTA BOTTOM -->
-        <div class="cta-bottom">
-            <h2>Siap Order Sekarang?</h2>
-            <p>Chat langsung via WhatsApp. Gratis konsultasi, bayar di awal & langsung dikerjakan.</p>
-            <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="btn-wa">
+        <div class="cta-wrap">
+            <div class="cta-bottom">
+                <h2>Siap Menyelesaikan Tugas Dokumen Anda?</h2>
+                <p>Jangan biarkan deadline menghantui. Pesan sekarang dan nikmati hasil berkualitas!</p>
+                <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="btn-wa">
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                     <path
                         d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
                 </svg>
                 Chat WhatsApp Sekarang
             </a>
+            </div>
         </div>
         <!-- FOOTER -->
         <!-- KEYWORD SECTION -->
-        <div style="padding:20px;background:#F9F9FB;border-top:1px solid #E5E7EB;">
+        <div class="keywords-section" style="padding:20px;background:#F9F9FB;border-top:1px solid #E5E7EB;">
             <p
                 style="font-size:12px;font-weight:700;color:#4B5563;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">
                 Layanan Lainnya</p>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+            <div class="keywords-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
                 @foreach ($visibleHomeServices as $service)
                     @include('partials.home-service-link', ['service' => $service])
                 @endforeach
@@ -1525,8 +1928,8 @@
                     d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
             </svg>
         </a>
-        </main>
-        <script>
+    </div>
+    <script>
             function toggleFaq(btn) {
                 const item = btn.closest('.faq-item');
                 const isOpen = item.classList.contains('open');
