@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
@@ -20,6 +21,9 @@ Route::get('/artikel', [ArticleController::class, 'index'])->name('articles.inde
 Route::get('/artikel/{slug}', [ArticleController::class, 'show'])->name('articles.show');
 
 Route::get('/layanan', [ServiceController::class, 'index'])->name('services.index');
+
+Route::get('/cara-order', [InfoController::class, 'orderGuide'])->name('order-guide');
+Route::get('/harga', [InfoController::class, 'pricing'])->name('pricing');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {

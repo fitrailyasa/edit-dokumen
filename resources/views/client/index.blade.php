@@ -196,6 +196,13 @@
             display: none;
         }
 
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color .2s;
+        }
+
         .nav-inner {
             display: contents;
         }
@@ -1169,15 +1176,11 @@
             .nav-links {
                 display: flex;
                 align-items: center;
-                gap: 32px;
+                gap: 18px;
             }
 
             .nav-links a {
-                color: var(--muted);
-                text-decoration: none;
-                font-size: 14px;
-                font-weight: 600;
-                transition: color .2s;
+                font-size: 13.5px;
             }
 
             .nav-links a:hover,
@@ -1567,9 +1570,7 @@
                     <span class="logo-text">Edit<span>Dokumen</span>.id</span>
                 </a>
                 <div class="nav-links">
-                    <a href="{{ route('home') }}" class="active">Beranda</a>
-                    <a href="{{ route('services.index') }}">Layanan</a>
-                    <a href="{{ route('articles.index') }}">Artikel</a>
+                    @include('layouts.client.nav-links')
                 </div>
                 <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="nav-wa"
                     aria-label="Chat WhatsApp EditDokumen.id">
@@ -1693,94 +1694,6 @@
                 <h3>Setelah Bayar, Langsung Dikerjakan!</h3>
                 <p>Transfer di awal, kami langsung proses. <strong>Revisi tak terbatas</strong> sampai kamu 100% puas.
                 </p>
-            </div>
-        </div>
-        <!-- HOW IT WORKS -->
-        <div class="divider" style="margin-top:20px;"></div>
-        <div class="section-header">
-            <div class="section-tag">Cara Order</div>
-            <h2>Mudah, Cepat, Beres!</h2>
-        </div>
-        <div class="how">
-            <div class="step">
-                <div class="step-num">1</div>
-                <div class="step-body">
-                    <h4>Chat WhatsApp</h4>
-                    <p>Hubungi kami via WA, ceritakan kebutuhanmu & kirim file yang perlu diedit.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-num">2</div>
-                <div class="step-body">
-                    <h4>Bayar di Awal</h4>
-                    <p>Transfer sesuai harga yang disepakati via GoPay, OVO, Dana, atau transfer bank.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-num">3</div>
-                <div class="step-body">
-                    <h4>Proses 1-2 Jam</h4>
-                    <p>Setelah pembayaran masuk, tim kami langsung mengerjakan pesananmu.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-num">4</div>
-                <div class="step-body">
-                    <h4>Cek Hasil & Revisi</h4>
-                    <p>Terima file hasil, minta revisi sebanyak apapun sampai kamu puas. File dikirim via WA.</p>
-                </div>
-            </div>
-        </div>
-        <!-- PRICING -->
-        <div class="divider"></div>
-        <div class="section-header">
-            <div class="section-tag">Harga</div>
-            <h2>Harga Transparan, Tanpa Biaya Tambahan</h2>
-            <p>Harga bisa berubah sesuai tingkat kesulitan. Tanya dan konsultasi dulu gratis!</p>
-        </div>
-        <div class="pricing">
-            <div class="price-card">
-                <div class="price-header">
-                    <div class="price-name">Edit PDF</div>
-                    <div class="price-emoji">📝</div>
-                </div>
-                <div class="price-amount">Mulai Rp 25.000 <small>/ dokumen</small></div>
-                <ul class="price-features">
-                    <li>Edit teks & gambar PDF</li>
-                    <li>Hapus / tambah watermark</li>
-                    <li>Ubah layout & margin</li>
-                    <li>Revisi tak terbatas</li>
-                    <li>Selesai 1-2 jam</li>
-                </ul>
-            </div>
-            <div class="price-card popular">
-                <div class="popular-badge">⭐ Paling Laris</div>
-                <div class="price-header">
-                    <div class="price-name">Scan PDF Bersih</div>
-                    <div class="price-emoji">📷</div>
-                </div>
-                <div class="price-amount">Mulai Rp 15.000 <small>/ halaman</small></div>
-                <ul class="price-features">
-                    <li>Foto jadi PDF berkualitas tinggi</li>
-                    <li>Hapus bayangan & noise</li>
-                    <li>Perbaiki kecerahan & warna</li>
-                    <li>Luruskan dokumen miring</li>
-                    <li>Gabungkan jadi 1 PDF</li>
-                </ul>
-            </div>
-            <div class="price-card">
-                <div class="price-header">
-                    <div class="price-name">Bikin Makalah</div>
-                    <div class="price-emoji">📚</div>
-                </div>
-                <div class="price-amount">Mulai Rp 75.000 <small>/ makalah</small></div>
-                <ul class="price-features">
-                    <li>Makalah & laporan akademik</li>
-                    <li>Untuk SMP, SMA & Kampus</li>
-                    <li>Format sesuai sekolah/kampus</li>
-                    <li>Daftar pustaka lengkap</li>
-                    <li>Revisi tak terbatas</li>
-                </ul>
             </div>
         </div>
         <!-- TESTIMONIALS -->
@@ -1971,6 +1884,8 @@
             <div class="footer-links">
                 <a href="{{ route('home') }}">Beranda</a>
                 <a href="{{ route('services.index') }}">Layanan</a>
+                <a href="{{ route('order-guide') }}">Cara Order</a>
+                <a href="{{ route('pricing') }}">Harga</a>
                 <a href="{{ route('articles.index') }}">Artikel</a>
                 @foreach ($footerPages ?? [] as $footerPage)
                     <a href="{{ route('pages.show', $footerPage->slug) }}">{{ $footerPage->title }}</a>

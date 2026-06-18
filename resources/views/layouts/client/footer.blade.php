@@ -11,6 +11,8 @@
 <div class="footer-links">
     <a href="{{ route('home') }}">Beranda</a>
     <a href="{{ route('services.index') }}">Layanan</a>
+    <a href="{{ route('order-guide') }}">Cara Order</a>
+    <a href="{{ route('pricing') }}">Harga</a>
     <a href="{{ route('articles.index') }}">Artikel</a>
     @foreach ($footerPages ?? [] as $footerPage)
         <a href="{{ route('pages.show', $footerPage->slug) }}">{{ $footerPage->title }}</a>
