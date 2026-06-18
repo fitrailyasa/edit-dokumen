@@ -203,7 +203,7 @@
         /* ── HERO ── */
         .hero {
             background: var(--gradient-hero);
-            padding: 44px 24px 52px;
+            padding: 32px 24px 48px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -312,6 +312,7 @@
         .btn-ghost {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             color: white;
             font-weight: 600;
@@ -322,6 +323,7 @@
             border-radius: 10px;
             background: transparent;
             transition: background .2s, border-color .2s;
+            width: 100%;
         }
 
         .btn-ghost:hover {
@@ -358,6 +360,95 @@
             color: var(--accent-bright);
             font-weight: 800;
             font-size: 14px;
+        }
+
+        .hero-offer {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+            padding: 0 4px;
+        }
+
+        .btn-offer {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            background: linear-gradient(145deg, rgba(36, 71, 143, .42) 0%, rgba(18, 37, 73, .72) 100%);
+            color: white;
+            padding: 16px 28px 18px;
+            border-radius: 18px;
+            border: 1.5px solid rgba(64, 191, 132, .5);
+            text-decoration: none;
+            box-shadow:
+                0 10px 32px rgba(0, 0, 0, .22),
+                inset 0 1px 0 rgba(255, 255, 255, .1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform .25s, box-shadow .25s, border-color .25s, background .25s;
+            width: 100%;
+            max-width: 340px;
+            overflow: hidden;
+        }
+
+        .btn-offer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 25%, rgba(64, 191, 132, .18) 50%, transparent 75%);
+            transform: translateX(-120%);
+            transition: transform .6s ease;
+        }
+
+        .btn-offer:hover::before {
+            transform: translateX(120%);
+        }
+
+        .btn-offer:hover {
+            transform: translateY(-3px) scale(1.02);
+            border-color: var(--accent-bright);
+            background: linear-gradient(145deg, rgba(43, 171, 111, .28) 0%, rgba(18, 37, 73, .78) 100%);
+            box-shadow:
+                0 14px 40px rgba(43, 171, 111, .28),
+                inset 0 1px 0 rgba(255, 255, 255, .14);
+        }
+
+        .btn-offer-eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .7px;
+            text-transform: uppercase;
+            color: var(--accent-bright);
+            margin-bottom: 4px;
+        }
+
+        .btn-offer-price {
+            font-size: clamp(28px, 7vw, 34px);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -.6px;
+            color: white;
+            margin: 2px 0;
+        }
+
+        .btn-offer-price span {
+            color: var(--accent-bright);
+        }
+
+        .btn-offer-tagline {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, .78);
+            line-height: 1.4;
+            margin-top: 6px;
+        }
+
+        .btn-offer-tagline em {
+            font-style: normal;
+            color: white;
+            font-weight: 700;
         }
 
         /* stats row */
@@ -1101,7 +1192,7 @@
             }
 
             .hero {
-                padding: 88px 24px 96px;
+                padding: 40px 24px 72px;
             }
 
             .hero h1 {
@@ -1128,9 +1219,22 @@
                 gap: 14px;
             }
 
-            .btn-primary {
+            .btn-primary,
+            .btn-ghost {
                 width: auto;
+            }
+
+            .btn-primary {
                 padding: 15px 32px;
+            }
+
+            .btn-offer {
+                max-width: 380px;
+                padding: 18px 36px 20px;
+            }
+
+            .btn-offer-price {
+                font-size: 36px;
             }
 
             .hero-stats {
@@ -1489,16 +1593,19 @@
                 <span>Garansi Revisi</span>
                 <span>100% Rahasia</span>
             </div>
+            <div class="hero-offer">
+                <a href="{{ route('services.index') }}" class="btn-offer" aria-label="Lihat layanan mulai dari Rp20.000">
+                    <span class="btn-offer-eyebrow">Harga terjangkau</span>
+                    <span class="btn-offer-price">Mulai <span>Rp20.000</span></span>
+                    <span class="btn-offer-tagline">Cepat selesai, <em>revisi sampai puas.</em></span>
+                </a>
+            </div>
             <div class="hero-cta">
                 <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="btn-primary">
                     Pesan Sekarang →
                 </a>
                 <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="btn-ghost">
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <path
-                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
-                    </svg>
-                    Chat WhatsApp
+                    Konsultasi Gratis
                 </a>
             </div>
             <div class="hero-stats">
