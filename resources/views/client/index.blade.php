@@ -10,7 +10,7 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#2563EB" />
+    <meta name="theme-color" content="#13316c" />
     <meta name="description"
         content="{{ $siteSetting->description ?: 'Jasa profesional edit PDF, scan dokumen, dan pembuatan makalah online murah & cepat. Solusi olah dokumen digital terpercaya di Indonesia dengan layanan 24 jam.' }}" />
     <meta name="keywords"
@@ -77,24 +77,30 @@
         }
 
         :root {
-            --primary: #2563EB;
-            --primary-dark: #1D4ED8;
-            --primary-light: #EFF6FF;
-            --accent: #FF6584;
-            --green: #166534;
-            --text: #1A1A2E;
-            --muted: #4B5563;
-            --border: #E5E7EB;
-            --bg: #F9F9FB;
+            --primary: #13316c;
+            --primary-dark: #122549;
+            --primary-mid: #24478f;
+            --primary-light: #e8eef7;
+            --accent: #2bab6f;
+            --accent-light: #d4f5e6;
+            --accent-bright: #40bf84;
+            --green: #2bab6f;
+            --text: #1b2232;
+            --muted: #676f7e;
+            --border: #e2e4e9;
+            --bg: #f3f5f7;
             --white: #FFFFFF;
             --radius: 16px;
             --mobile-w: 460px;
             --container: min(1200px, calc(100% - 48px));
+            --gradient-hero: linear-gradient(180deg, #13316c 0%, #122549 100%);
+            --gradient-primary: linear-gradient(135deg, #13316c 0%, #24478f 100%);
+            --gradient-accent: linear-gradient(135deg, #2bab6f 0%, #40bf84 100%);
         }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #ECECF3;
+            background: var(--bg);
             color: var(--text);
             min-height: 100vh;
             display: flex;
@@ -165,14 +171,15 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            background: #166534;
+            background: var(--gradient-accent);
             color: white;
             font-weight: 600;
             font-size: 13px;
-            padding: 8px 14px;
-            border-radius: 50px;
+            padding: 8px 16px;
+            border-radius: 10px;
             text-decoration: none;
-            transition: opacity .2s;
+            transition: opacity .2s, transform .2s;
+            box-shadow: 0 4px 14px -2px rgba(43, 171, 111, .4);
         }
 
         .nav-wa:hover {
@@ -195,7 +202,7 @@
 
         /* ── HERO ── */
         .hero {
-            background: linear-gradient(160deg, #2563EB 0%, #3B82F6 100%);
+            background: var(--gradient-hero);
             padding: 44px 24px 52px;
             text-align: center;
             position: relative;
@@ -227,19 +234,23 @@
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, .18);
-            border: 1px solid rgba(255, 255, 255, .3);
-            color: white;
+            gap: 8px;
+            background: rgba(43, 171, 111, .15);
+            border: 1px solid rgba(43, 171, 111, .35);
+            color: var(--accent-bright);
             font-size: 12px;
             font-weight: 600;
-            padding: 6px 14px;
+            padding: 7px 16px;
             border-radius: 50px;
             margin-bottom: 20px;
         }
 
-        .hero-badge span {
-            font-size: 14px;
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
         }
 
         .hero h1 {
@@ -253,10 +264,7 @@
 
         .hero h1 em {
             font-style: normal;
-            background: linear-gradient(90deg, #FFE17B, #FFB347);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--accent-bright);
         }
 
         .hero p {
@@ -277,14 +285,14 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: white;
-            color: var(--primary);
+            background: var(--gradient-accent);
+            color: white;
             font-weight: 700;
             font-size: 15px;
             padding: 14px 28px;
-            border-radius: 50px;
+            border-radius: 10px;
             text-decoration: none;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+            box-shadow: 0 4px 14px -2px rgba(43, 171, 111, .45);
             transition: transform .2s, box-shadow .2s;
             width: 100%;
             justify-content: center;
@@ -292,23 +300,33 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(0, 0, 0, .2);
+            box-shadow: 0 8px 24px -2px rgba(43, 171, 111, .5);
         }
 
         .btn-primary svg {
             width: 18px;
             height: 18px;
-            fill: var(--green);
+            fill: white;
         }
 
         .btn-ghost {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            color: rgba(255, 255, 255, .9);
+            gap: 8px;
+            color: white;
             font-weight: 600;
             font-size: 14px;
             text-decoration: none;
+            padding: 13px 24px;
+            border: 1.5px solid rgba(255, 255, 255, .55);
+            border-radius: 10px;
+            background: transparent;
+            transition: background .2s, border-color .2s;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, .08);
+            border-color: rgba(255, 255, 255, .8);
         }
 
         .btn-ghost svg {
@@ -328,14 +346,18 @@
         .hero-trust span {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            background: rgba(255, 255, 255, .15);
-            border: 1px solid rgba(255, 255, 255, .25);
-            color: white;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 6px 14px;
-            border-radius: 50px;
+            gap: 6px;
+            color: rgba(255, 255, 255, .92);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 4px 8px;
+        }
+
+        .hero-trust span::before {
+            content: '✓';
+            color: var(--accent-bright);
+            font-weight: 800;
+            font-size: 14px;
         }
 
         /* stats row */
@@ -431,7 +453,7 @@
         }
 
         .service-card:hover {
-            box-shadow: 0 4px 24px rgba(108, 99, 255, .12);
+            box-shadow: 0 4px 24px rgba(19, 49, 108, .1);
             transform: translateY(-2px);
         }
 
@@ -447,15 +469,15 @@
         }
 
         .icon-purple {
-            background: #EFF6FF;
+            background: var(--primary-light);
         }
 
         .icon-blue {
-            background: #EFF6FF;
+            background: var(--primary-light);
         }
 
         .icon-pink {
-            background: #FFF1F3;
+            background: var(--accent-light);
         }
 
         .service-body {
@@ -494,6 +516,7 @@
 
         .service-cta {
             display: none;
+            color: var(--accent);
         }
 
         /* ── WHY US ── */
@@ -544,7 +567,7 @@
         /* ── PROMO BANNER ── */
         .promo {
             margin: 20px;
-            background: linear-gradient(135deg, #0F172A, #1E3A5F);
+            background: var(--gradient-primary);
             border-radius: var(--radius);
             padding: 22px 20px;
             display: flex;
@@ -572,7 +595,7 @@
         }
 
         .promo-body strong {
-            color: #FFE17B;
+            color: var(--accent-bright);
         }
 
         /* ── HOW IT WORKS ── */
@@ -716,8 +739,8 @@
             content: '✓';
             width: 18px;
             height: 18px;
-            background: #DCFCE7;
-            color: var(--green);
+            background: var(--accent-light);
+            color: var(--accent);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -853,7 +876,7 @@
         }
 
         .cta-bottom {
-            background: linear-gradient(160deg, #2563EB, #3B82F6);
+            background: var(--gradient-hero);
             border-radius: var(--radius);
             padding: 28px 20px;
             text-align: center;
@@ -879,21 +902,21 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: #166534;
+            background: var(--gradient-accent);
             color: white;
             font-weight: 700;
             font-size: 15px;
             padding: 14px 28px;
-            border-radius: 50px;
+            border-radius: 10px;
             text-decoration: none;
             width: 100%;
-            box-shadow: 0 4px 16px rgba(34, 197, 94, .4);
+            box-shadow: 0 4px 14px -2px rgba(43, 171, 111, .45);
             transition: transform .2s, box-shadow .2s;
         }
 
         .btn-wa:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(34, 197, 94, .45);
+            box-shadow: 0 8px 24px -2px rgba(43, 171, 111, .5);
         }
 
         .btn-wa svg {
@@ -904,7 +927,7 @@
 
         /* ── FOOTER ── */
         footer {
-            background: var(--text);
+            background: var(--primary-dark);
             padding: 28px 24px;
             text-align: center;
         }
@@ -947,7 +970,7 @@
         }
 
         .footer-brand span {
-            color: #60A5FA;
+            color: var(--accent-bright);
         }
 
         footer p {
@@ -995,9 +1018,9 @@
             justify-content: center;
             width: 52px;
             height: 52px;
-            background: #166534;
+            background: var(--gradient-accent);
             border-radius: 50%;
-            box-shadow: 0 4px 20px rgba(34, 197, 94, .5);
+            box-shadow: 0 4px 20px rgba(43, 171, 111, .45);
             text-decoration: none;
             transition: transform .2s;
         }
@@ -1066,8 +1089,15 @@
                 transition: color .2s;
             }
 
-            .nav-links a:hover {
-                color: var(--primary);
+            .nav-links a:hover,
+            .nav-links a.active {
+                color: var(--accent);
+            }
+
+            .nav-links a.active {
+                background: var(--accent-light);
+                padding: 6px 12px;
+                border-radius: 8px;
             }
 
             .hero {
@@ -1155,7 +1185,7 @@
                 align-items: center;
                 gap: 4px;
                 margin-top: 16px;
-                color: var(--primary);
+                color: var(--accent);
                 font-size: 14px;
                 font-weight: 700;
             }
@@ -1220,7 +1250,7 @@
 
             .cta-wrap {
                 padding: 0;
-                background: linear-gradient(160deg, #2563EB, #3B82F6);
+                background: var(--gradient-hero);
                 margin-bottom: 0;
             }
 
@@ -1426,14 +1456,15 @@
                 <a href="{{ route('home') }}" class="logo" aria-label="EditDokumen.id — Beranda">
                     <div class="logo-icon">
                         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" />
+                            <path
+                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" />
                         </svg>
                     </div>
                     <span class="logo-text">Edit<span>Dokumen</span>.id</span>
                 </a>
                 <div class="nav-links">
-                    <a href="{{ route('home') }}">Beranda</a>
-                    <a href="#layanan">Layanan</a>
+                    <a href="{{ route('home') }}" class="active">Beranda</a>
+                    <a href="{{ route('services.index') }}">Layanan</a>
                     <a href="{{ route('articles.index') }}">Artikel</a>
                 </div>
                 <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="nav-wa"
@@ -1442,35 +1473,32 @@
                         <path
                             d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
                     </svg>
-                    Chat WA
+                    WhatsApp
                 </a>
             </div>
         </nav>
         <!-- HERO -->
         <section class="hero">
-            <div class="hero-badge"><span>⚡</span> Jasa Edit Dokumen Terpercaya #1</div>
-            <h1>Jasa Edit PDF, Scan Foto ke PDF & <em>Bikin Makalah</em> Secara Profesional</h1>
-            <p>Bayar di awal, langsung dikerjakan & revisi sampai puas. Proses cepat, hasil profesional. Chat WhatsApp
-                sekarang!</p>
+            <div class="hero-badge"><span class="dot"></span> Jasa Edit Dokumen Terpercaya #1</div>
+            <h1>Butuh Bantuan <em>Edit Dokumen?</em> Kami Siap Membantu!</h1>
+            <p>Jasa edit PDF, scan foto ke PDF, dan pembuatan makalah profesional untuk pelajar SMP, SMA, SMK, dan
+                Mahasiswa. Dikerjakan dengan kualitas terbaik dan tepat waktu.</p>
             <div class="hero-trust">
-                <span>✓ Bebas Plagiarisme</span>
-                <span>✓ Tepat Waktu</span>
-                <span>✓ Garansi Revisi</span>
-                <span>✓ 100% Rahasia</span>
+                <span>Bebas Plagiarisme</span>
+                <span>Tepat Waktu</span>
+                <span>Garansi Revisi</span>
+                <span>100% Rahasia</span>
             </div>
             <div class="hero-cta">
                 <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    Pesan Sekarang →
+                </a>
+                <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="btn-ghost">
                     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <path
                             d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
                     </svg>
-                    Pesan Sekarang via WhatsApp
-                </a>
-                <a href="#layanan" class="btn-ghost">
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <path d="M13 5.586L11.586 7l5 5H3v2h13.586l-5 5L13 20.414 20.414 13z" />
-                    </svg>
-                    Lihat Layanan
+                    Chat WhatsApp
                 </a>
             </div>
             <div class="hero-stats">
@@ -1514,6 +1542,12 @@
                     </div>
                 </a>
             @endforeach
+        </div>
+        <div style="padding:0 20px 28px;text-align:center;">
+            <a href="{{ route('services.index') }}"
+                style="display:inline-flex;align-items:center;justify-content:center;gap:6px;background:white;border:2px solid var(--primary);color:var(--primary);font-weight:800;font-size:14px;padding:14px 28px;border-radius:12px;text-decoration:none;">
+                Lihat Semua Layanan →
+            </a>
         </div>
         <!-- WHY US -->
         <section class="why-us">
@@ -1655,7 +1689,7 @@
                     berantakan
                     jadi rapi banget. Recommended!"</p>
                 <div class="testi-author">
-                    <div class="testi-avatar" style="background:#2563EB;">A</div>
+                    <div class="testi-avatar" style="background:var(--primary);">A</div>
                     <div class="testi-info">
                         <strong>Andini R.</strong>
                         <span>Mahasiswi UI, Jakarta</span>
@@ -1668,7 +1702,7 @@
                     Admin sabar
                     nemenin revisi sampe puas."</p>
                 <div class="testi-author">
-                    <div class="testi-avatar" style="background:#FF6584;">B</div>
+                    <div class="testi-avatar" style="background:var(--accent);">B</div>
                     <div class="testi-info">
                         <strong>Budi S.</strong>
                         <span>Karyawan Swasta, Surabaya</span>
@@ -1681,7 +1715,7 @@
                     udah
                     bener, dapat A! Pake lagi deh."</p>
                 <div class="testi-author">
-                    <div class="testi-avatar" style="background:#166534;">D</div>
+                    <div class="testi-avatar" style="background:var(--primary-mid);">D</div>
                     <div class="testi-info">
                         <strong>Dinda F.</strong>
                         <span>Mahasiswi UGM, Yogyakarta</span>
@@ -1800,104 +1834,21 @@
         </div>
         <!-- ABOUT SECTION -->
         <div class="divider"></div>
-        <div class="about-section" style="padding:24px 20px;background:white;">
-            <p
-                style="font-size:11.5px;font-weight:700;color:#4B5563;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">
-                Tentang EditDokumen.id</p>
-            <p style="font-size:14px;color:#4B5563;line-height:1.8;margin-bottom:12px;">
-                <strong style="color:#1A1A2E;">EditDokumen.id</strong> adalah layanan jasa edit PDF, scan dokumen, dan
-                pembuatan makalah online yang bisa diakses dari seluruh Indonesia. Semua proses dilakukan via WhatsApp —
-                kamu cukup kirim file, jelaskan kebutuhan, dan hasil siap dalam 1–2 jam.
-            </p>
-            <p style="font-size:14px;color:#4B5563;line-height:1.8;margin-bottom:12px;">
-                Layanan kami mencakup <a href="jasa-edit-pdf"
-                    style="color:#2563EB;font-weight:600;text-decoration:none;">jasa edit PDF</a>, <a
-                    href="jasa-scan-foto-ke-pdf" style="color:#2563EB;font-weight:600;text-decoration:none;">scan foto
-                    ke PDF</a>, <a href="jasa-ubah-foto-jadi-pdf"
-                    style="color:#2563EB;font-weight:600;text-decoration:none;">ubah foto jadi PDF</a>, <a
-                    href="jasa-convert-jpg-ke-pdf" style="color:#2563EB;font-weight:600;text-decoration:none;">convert
-                    JPG ke PDF</a>, <a href="jasa-hapus-watermark-pdf"
-                    style="color:#2563EB;font-weight:600;text-decoration:none;">hapus watermark PDF</a>, <a
-                    href="jasa-tambah-watermark-pdf"
-                    style="color:#2563EB;font-weight:600;text-decoration:none;">tambah watermark</a>, <a
-                    href="jasa-tanda-tangan-pdf" style="color:#2563EB;font-weight:600;text-decoration:none;">tanda
-                    tangan PDF</a>, <a href="jasa-bikin-makalah"
-                    style="color:#2563EB;font-weight:600;text-decoration:none;">bikin makalah</a>, <a
-                    href="jasa-ketik-dokumen" style="color:#2563EB;font-weight:600;text-decoration:none;">ketik
-                    dokumen</a>, <a href="jasa-rekap-data-excel"
-                    style="color:#2563EB;font-weight:600;text-decoration:none;">rekap data Excel</a>, dan masih banyak
-                lagi — lebih dari 30 jenis layanan dokumen.
-            </p>
-            <p style="font-size:14px;color:#4B5563;line-height:1.8;">
-                Harga mulai <strong style="color:#1A1A2E;">Rp 5.000</strong>, pembayaran via DANA, GoPay, ShopeePay,
-                atau Transfer BCA. Revisi gratis sampai puas.
-            </p>
-        </div>
-        <!-- ARTIKEL -->
-        <div class="divider"></div>
-        <div class="articles-section" style="padding:24px 20px 28px;">
-            <p
-                style="font-size:11.5px;font-weight:700;color:#4B5563;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px;">
-                Panduan & Tips</p>
-            <div class="articles-grid" style="display:flex;flex-direction:column;gap:10px;" id="dynamic-articles">
-                @forelse ($recentPosts ?? [] as $post)
-                    <a href="{{ route('articles.show', $post->slug) }}"
-                        style="display:flex;align-items:center;gap:12px;background:#F9F9FB;border:1px solid #E5E7EB;border-radius:12px;padding:14px;text-decoration:none;">
-                        <span style="font-size:24px;flex-shrink:0;">📄</span>
-                        <div style="min-width:0;">
-                            <div
-                                style="font-size:13.5px;font-weight:700;color:#1A1A2E;margin-bottom:3px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">
-                                {{ $post->title }}</div>
-                        </div>
-                        <span style="margin-left:auto;color:#2563EB;font-size:18px;flex-shrink:0;">›</span>
-                    </a>
-                @empty
-                    <p style="font-size:13px;color:#4B5563;">Belum ada artikel yang dipublikasikan.</p>
-                @endforelse
-            </div>
-            <a href="{{ route('articles.index') }}"
-                style="display:block;margin-top:20px;text-align:center;background:white;border:2px solid var(--primary);color:var(--primary);font-weight:800;font-size:14px;padding:14px;border-radius:12px;text-decoration:none;">
-                Lihat Semua Artikel & Panduan →
-            </a>
-        </div>
         <!-- CTA BOTTOM -->
         <div class="cta-wrap">
             <div class="cta-bottom">
                 <h2>Siap Menyelesaikan Tugas Dokumen Anda?</h2>
                 <p>Jangan biarkan deadline menghantui. Pesan sekarang dan nikmati hasil berkualitas!</p>
                 <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="btn-wa">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path
-                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
-                </svg>
-                Chat WhatsApp Sekarang
-            </a>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+                    </svg>
+                    Chat WhatsApp Sekarang
+                </a>
             </div>
         </div>
         <!-- FOOTER -->
-        <!-- KEYWORD SECTION -->
-        <div class="keywords-section" style="padding:20px;background:#F9F9FB;border-top:1px solid #E5E7EB;">
-            <p
-                style="font-size:12px;font-weight:700;color:#4B5563;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">
-                Layanan Lainnya</p>
-            <div class="keywords-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
-                @foreach ($visibleHomeServices as $service)
-                    @include('partials.home-service-link', ['service' => $service])
-                @endforeach
-            </div>
-            @if ($moreHomeServices->isNotEmpty())
-                <div id="more-layanan"
-                    style="display:none;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;">
-                    @foreach ($moreHomeServices as $service)
-                        @include('partials.home-service-link', ['service' => $service])
-                    @endforeach
-                </div>
-                <button id="toggle-layanan" onclick="toggleLayanan()" aria-expanded="false"
-                    aria-controls="more-layanan"
-                    style="display:block;width:100%;margin-top:10px;background:white;border:1.5px solid #E5E7EB;border-radius:10px;padding:11px;font-family:inherit;font-size:12px;font-weight:700;color:#2563EB;cursor:pointer;text-align:center;">Lihat
-                    Semua Layanan ↓</button>
-            @endif
-        </div>
         <footer>
             <div class="footer-logo">
                 <div class="footer-logo-icon">
@@ -1912,6 +1863,7 @@
             <p>📍 {{ $siteSetting->address ?: 'Melayani di seluruh Indonesia via WhatsApp' }}</p>
             <div class="footer-links">
                 <a href="{{ route('home') }}">Beranda</a>
+                <a href="{{ route('services.index') }}">Layanan</a>
                 <a href="{{ route('articles.index') }}">Artikel</a>
                 @foreach ($footerPages ?? [] as $footerPage)
                     <a href="{{ route('pages.show', $footerPage->slug) }}">{{ $footerPage->title }}</a>
@@ -1930,28 +1882,28 @@
         </a>
     </div>
     <script>
-            function toggleFaq(btn) {
-                const item = btn.closest('.faq-item');
-                const isOpen = item.classList.contains('open');
-                document.querySelectorAll('.faq-item').forEach(i => {
-                    i.classList.remove('open');
-                    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-                });
-                if (!isOpen) {
-                    item.classList.add('open');
-                    btn.setAttribute('aria-expanded', 'true');
-                }
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('open');
+                i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+                item.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
             }
+        }
 
-            function toggleLayanan() {
-                var more = document.getElementById('more-layanan');
-                var btn = document.getElementById('toggle-layanan');
-                var isHidden = more.style.display === 'none';
-                more.style.display = isHidden ? 'grid' : 'none';
-                btn.textContent = isHidden ? 'Sembunyikan ↑' : 'Lihat Semua Layanan ↓';
-                btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
-            }
-        </script>
+        function toggleLayanan() {
+            var more = document.getElementById('more-layanan');
+            var btn = document.getElementById('toggle-layanan');
+            var isHidden = more.style.display === 'none';
+            more.style.display = isHidden ? 'grid' : 'none';
+            btn.textContent = isHidden ? 'Sembunyikan ↑' : 'Lihat Semua Layanan ↓';
+            btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+        }
+    </script>
 </body>
 
 </html>

@@ -25,6 +25,35 @@ class ArticleController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
-        return view('client.articles.show', compact('post'));
+        $sidebarItems = Post::published()
+            ->where('id', '!=', $post->id)
+            ->when($post->category_id, fn ($q) => $q->where('category_id', $post->category_id))
+            ->latest('published_at')
+            ->latest()
+            ->take(6)
+            ->get(['title', 'slug'])
+            ->map(fn (Post $item) => [
+                'title' => $item->title,
+                'url' => route('articles.show', $item->slug),
+                'icon' => '📄',
+            ]);
+
+        if ($sidebarItems->isEmpty()) {
+            $sidebarItems = Post::published()
+                ->where('id', '!=', $post->id)
+                ->latest('published_at')
+                ->latest()
+                ->take(6)
+                ->get(['title', 'slug'])
+                ->map(fn (Post $item) => [
+                    'title' => $item->title,
+                    'url' => route('articles.show', $item->slug),
+                    'icon' => '📄',
+                ]);
+        }
+
+        $sidebarTitle = 'Artikel Lainnya';
+
+        return view('client.articles.show', compact('post', 'sidebarItems', 'sidebarTitle'));
     }
 }
